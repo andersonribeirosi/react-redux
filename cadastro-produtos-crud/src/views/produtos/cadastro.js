@@ -19,7 +19,7 @@ class CadastroProduto extends React.Component {
 
     constructor() {
         super()
-        this.service = new ProdutoService;
+        this.service = new ProdutoService();
     }
 
     onChange = (event) => {
