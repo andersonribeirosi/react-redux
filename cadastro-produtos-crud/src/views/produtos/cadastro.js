@@ -1,6 +1,8 @@
 import React from 'react'
 import ProdutoService from '../../app/produtoService'
 
+import Card from '../../components/card'
+
 import { withRouter } from 'react-router-dom'
 
 const estadoInicial = {
@@ -72,13 +74,8 @@ class CadastroProduto extends React.Component {
 
     render() {
         return (
-            <div className="card">
-                <div className="card-header">
-                    {this.state.atualizar? 'Editando ' : 'Cadastrando '}
-                    Produto
-                </div>
-                <div className="card-body">
-
+            <Card header={this.state.atualizar? 'Editando Produto ' : 'Cadastrando Produto '}>
+       
                     {this.state.msgSucesso &&
                         <div className="alert alert-dismissible alert-success">
                             <button type="button" className="close" data-dismiss="alert">&times;</button>
@@ -142,8 +139,7 @@ class CadastroProduto extends React.Component {
                             <button onClick={this.limpaCampos} className="btn btn-info">Limpar</button>
                         </div>
                     </div>
-                </div>
-            </div>
+                </Card>
         )
     }
 }
