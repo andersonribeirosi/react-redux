@@ -10,7 +10,8 @@ const estadoInicial = {
     preco: 0,
     fornecedor: '',
     msgSucesso: false,
-    errors: []
+    errors: [],
+    atualizar: false
 }
 
 class CadastroProduto extends React.Component {
@@ -64,7 +65,7 @@ class CadastroProduto extends React.Component {
 
             if(resultado.length === 1){
                 const produtoEncontrado = resultado[0]
-                this.setState({ ...produtoEncontrado })
+                this.setState({ ...produtoEncontrado, atualizar: true })
             }
         }
     }
@@ -73,7 +74,8 @@ class CadastroProduto extends React.Component {
         return (
             <div className="card">
                 <div className="card-header">
-                    Cadastro de Produto
+                    {this.state.atualizar? 'Editando ' : 'Cadastrando '}
+                    Produto
                 </div>
                 <div className="card-body">
 
@@ -102,7 +104,7 @@ class CadastroProduto extends React.Component {
                         </div>
                         <div className="col-md-6">
                             <label>SKU: *</label>
-                            <input onChange={this.onChange} type="text" name="sku" value={this.state.sku} className="form-control" />
+                            <input onChange={this.onChange} disabled={this.state.atualizar} type="text" name="sku" value={this.state.sku} className="form-control" />
                         </div>
                     </div>
 
@@ -131,7 +133,10 @@ class CadastroProduto extends React.Component {
 
                     <div className="row mt-5">
                         <div className="col-md-1">
-                            <button onClick={this.onSubmit} className="btn btn-success">Salvar</button>
+                            
+                            <button onClick={this.onSubmit} className="btn btn-success">
+                            {this.state.atualizar? 'Atualizar' : 'Salvar'}
+                                </button>
                         </div>
                         <div className="col-md-1">
                             <button onClick={this.limpaCampos} className="btn btn-info">Limpar</button>
