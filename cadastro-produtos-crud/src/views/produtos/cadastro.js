@@ -62,7 +62,7 @@ class CadastroProduto extends React.Component {
                     service.
                     obterProdutos().filter( produto => produto.sku === sku )
 
-            if(resultado.lenght === 1){
+            if(resultado.length === 1){
                 const produtoEncontrado = resultado[0]
                 this.setState({ ...produtoEncontrado })
             }
